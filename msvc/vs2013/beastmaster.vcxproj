@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Area.cpp" />
+    <ClCompile Include="..\..\src\BitmapFont.cpp" />
+    <ClCompile Include="..\..\src\Character.cpp" />
+    <ClCompile Include="..\..\src\GameApp.cpp" />
+    <ClCompile Include="..\..\src\Log.cpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\ResourceManager.cpp" />
+    <ClCompile Include="..\..\src\StateBattle.cpp" />
+    <ClCompile Include="..\..\src\StateManager.cpp" />
+    <ClCompile Include="..\..\src\StateMessage.cpp" />
+    <ClCompile Include="..\..\src\StateOverworld.cpp" />
+    <ClCompile Include="..\..\src\Texture.cpp" />
+    <ClCompile Include="..\..\src\tinyxml2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Area.hpp" />
+    <ClInclude Include="..\..\src\BitmapFont.hpp" />
+    <ClInclude Include="..\..\src\Character.hpp" />
+    <ClInclude Include="..\..\src\GameApp.hpp" />
+    <ClInclude Include="..\..\src\PlayerInfo.hpp" />
+    <ClInclude Include="..\..\src\GameState.hpp" />
+    <ClInclude Include="..\..\src\Log.hpp" />
+    <ClInclude Include="..\..\src\ResourceManager.hpp" />
+    <ClInclude Include="..\..\src\StateBattle.hpp" />
+    <ClInclude Include="..\..\src\StateManager.hpp" />
+    <ClInclude Include="..\..\src\StateMessage.hpp" />
+    <ClInclude Include="..\..\src\StateOverworld.hpp" />
+    <ClInclude Include="..\..\src\Texture.hpp" />
+    <ClInclude Include="..\..\src\tinyxml2.h" />
+    <ClInclude Include="..\..\src\Utility.hpp" />
+    <ClInclude Include="..\..\src\Vec2.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{409EC3CD-71A6-482C-9C15-19CF5DF5E3B8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>beastmaster</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\$(Platform)\$(Configuration)\</OutDir>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\$(Platform)\$(Configuration)\</OutDir>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;API_SDL;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SDL2-2.0.4\include;$(SolutionDir)\SDL2_image-2.0.1\include;$(SolutionDir)\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\SDL2_image-2.0.1\lib\$(Platform)\;$(SolutionDir)\SDL2-2.0.4\lib\$(Platform)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo Copying SDL2.dll.
+copy "$(SolutionDir)\SDL2-2.0.4\lib\$(Platform)\SDL2.dll" "$(SolutionDir)\$(Platform)\$(Configuration)\SDL2.dll"
+echo Copying SDL2_image.dll and dependencies.
+copy "$(SolutionDir)\SDL2_image-2.0.1\lib\$(Platform)\*.dll" "$(SolutionDir)\$(Platform)\$(Configuration)\*.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;API_SDL;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SDL2-2.0.4\include;$(SolutionDir)\SDL2_image-2.0.1\include;$(SolutionDir)\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\SDL2_image-2.0.1\lib\$(Platform)\;$(SolutionDir)\SDL2-2.0.4\lib\$(Platform)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo Copying SDL2.dll.
+copy "$(SolutionDir)\SDL2-2.0.4\lib\$(Platform)\SDL2.dll" "$(SolutionDir)\$(Platform)\$(Configuration)\SDL2.dll"
+echo Copying SDL2_image.dll and dependencies.
+copy "$(SolutionDir)\SDL2_image-2.0.1\lib\$(Platform)\*.dll" "$(SolutionDir)\$(Platform)\$(Configuration)\*.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

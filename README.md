@@ -1,1 +1,2 @@
-# fer2mon
+# Beastmaster
+A monster collecting and fighting game.
